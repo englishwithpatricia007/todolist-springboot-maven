@@ -42,12 +42,18 @@ Gerenciador de tarefas desenvolvido em Java com Spring Boot.
 
 ```` bash
 {
-  "name" : "Rodrigo",
-  "username": "RodrigoPerfeito",
+  "name" : "Patricia",
+  "username": "PatriciaPoulain",
   "password": "777"
 }
 ```` 
-4. Acesse o endpoint para cadastro de tarefas via POST em `/tasks/' 
+4. Acesse o endpoint para cadastro de tarefas via POST em `/tasks/' passando os dados de Basic Auth e da tarefa no body da requisição
+
+```bash
+username: PatriciaPoulain
+password: 777
+```
+
 ```` bash
 {
   "description": "Tarefa para gravar aula de tasks do curso de spring boot",
@@ -57,7 +63,9 @@ Gerenciador de tarefas desenvolvido em Java com Spring Boot.
   "endAt": "2025-05-22T17:00:00",
   "idUser":"2d3a18f4-45ba-4928-9d9b-840710d23315"	
 }
-```` 
+````
+
+
 
 ## Configurações
 
