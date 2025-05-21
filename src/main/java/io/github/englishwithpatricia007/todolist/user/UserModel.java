@@ -17,13 +17,13 @@ public class UserModel {
   @GeneratedValue(generator = "UUID")
   private UUID id;
 
-  @Column(name = "usuario", unique = true)
-  private String username;
-  private String name;
-  private String password;
+  public UUID getId() {
+    return id;
+  }
 
-  @CreationTimestamp
-  private LocalDateTime createdAt;
+  public void setId(UUID id) {
+    this.id = id;
+  }
 
   public String getUsername() {
     return username;
@@ -48,5 +48,21 @@ public class UserModel {
   public void setPassword(String password) {
     this.password = password;
   }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  @Column(name = "usuario", unique = true)
+  private String username;
+  private String name;
+  private String password;
+
+  @CreationTimestamp
+  private LocalDateTime createdAt;
 
 }
