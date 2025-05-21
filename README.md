@@ -40,6 +40,25 @@ Gerenciador de tarefas desenvolvido em Java com Spring Boot.
 2. Execute o projeto
 3. Acesse o endpoint para cadastro de usuários via POST em `/users/` passando um body json
 
+```` bash
+{
+  "name" : "Rodrigo",
+  "username": "RodrigoPerfeito",
+  "password": "777"
+}
+```` 
+4. Acesse o endpoint para cadastro de tarefas via POST em `/tasks/' 
+```` bash
+{
+  "description": "Tarefa para gravar aula de tasks do curso de spring boot",
+  "title": "Gravação de aula",
+  "priority": "Alta",
+  "startAt": "2025-05-21T17:00:00",
+  "endAt": "2025-05-22T17:00:00",
+  "idUser":"2d3a18f4-45ba-4928-9d9b-840710d23315"	
+}
+```` 
+
 ## Configurações
 
 - As configurações do banco de dados e aplicação estão em [`src/main/resources/application.properties`](src/main/resources/application.properties).
