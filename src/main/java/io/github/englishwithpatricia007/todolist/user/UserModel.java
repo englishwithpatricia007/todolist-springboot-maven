@@ -13,10 +13,6 @@ import jakarta.persistence.Id;
 @Entity(name = "tb_users")
 public class UserModel {
 
-  @Id
-  @GeneratedValue(generator = "UUID")
-  private UUID id;
-
   public UUID getId() {
     return id;
   }
@@ -56,6 +52,10 @@ public class UserModel {
   public void setCreatedAt(LocalDateTime createdAt) {
     this.createdAt = createdAt;
   }
+
+  @Id
+  @GeneratedValue(generator = "UUID")
+  private UUID id;
 
   @Column(name = "usuario", unique = true)
   private String username;
