@@ -2,70 +2,102 @@
 
 Gerenciador de tarefas desenvolvido em Java com Spring Boot.
 
+<p align="center">
+  <img alt="Todolist" src=".github/render.png" width="100%">
+</p>
+
 ## Tecnologias Utilizadas
 
 - **Java 21**  
   Linguagem principal do projeto.
 
 - **Spring Boot 3.4.5**  
-  Framework para facilitar a criação de aplicações Java, fornecendo configuração automática, injeção de dependências e suporte a web.
+  Framework para desenvolvimento rápido de aplicações Java, com configuração automática e suporte a APIs REST.
 
 - **Spring Data JPA**  
-  Abstração para persistência de dados, facilitando a integração com bancos de dados relacionais usando repositórios e entidades.
+  Abstração para persistência de dados, facilitando a integração com bancos de dados relacionais.
 
 - **H2 Database**  
-  Banco de dados em memória utilizado para desenvolvimento e testes, dispensando configuração externa.
+  Banco de dados em memória para desenvolvimento e testes.
 
 - **BCrypt (at.favre.lib:bcrypt)**  
   Biblioteca para hash seguro de senhas dos usuários.
 
-- **JUnit 5 (Spring Boot Starter Test)**  
-  Framework de testes utilizado para garantir a qualidade do código.
+- **JUnit 5**  
+  Framework de testes automatizados.
 
-## Funcionalidades Implementadas
+- **Spring Boot DevTools**  
+  Ferramenta para recarregamento automático durante o desenvolvimento.
+
+## Funcionalidades
 
 - **Cadastro de Usuário**
-  - Endpoint `/users/` para criação de novos usuários.
-  - Verificação de existência de usuário pelo nome de usuário.
-  - Senha armazenada de forma segura utilizando hash BCrypt.
-  - Persistência dos dados em banco H2 via Spring Data JPA.
+
+  - Criação de usuários via endpoint `/users`
+  - Validação de campos obrigatórios
+  - Senha armazenada de forma segura (BCrypt)
+  - Verificação de existência de usuário
+
+- **Autenticação**
+
+  - Autenticação básica para endpoints protegidos
+
+- **Cadastro de Tarefas**
+
+  - Criação, listagem e atualização de tarefas via endpoints `/tasks`
+  - Validação de datas (início e término)
+  - Associação de tarefas ao usuário autenticado
+  - Permissão de alteração apenas pelo dono da tarefa
 
 - **Estrutura do Projeto**
-  - Separação em camadas: controller, model e repository.
-  - Utilização de anotações do Spring para injeção de dependências e mapeamento de entidades.
+  - Separação em camadas: controller, model, repository e utils
+  - Uso de anotações Spring para injeção de dependências e mapeamento de entidades
 
 ## Como Executar
 
-1. Certifique-se de ter o Java 21 instalado.
-2. Execute o projeto
-3. Acesse o endpoint para cadastro de usuários via POST em `/users/` passando um body json
+1. Certifique-se de ter o **Java 21** instalado.
+2. Clone este repositório:
+   ```sh
+   git clone https://github.com/seu-usuario/todolist.git
+   cd todolist
+   ```
+3. Execute o projeto:
+   ```sh
+   ./mvnw spring-boot:run
+   ```
+   ou, no Windows:
+   ```sh
+   mvnw spring-boot:run
+   ```
 
-```` bash
+## Exemplos de Uso
+
+### Cadastro de Usuário
+
+**POST** `/users`
+
+```json
 {
-  "name" : "Patricia",
+  "name": "Patricia",
   "username": "PatriciaPoulain",
   "password": "777"
 }
-```` 
-4. Acesse o endpoint para cadastro de tarefas via POST em `/tasks/' passando os dados de Basic Auth e da tarefa no body da requisição
-
-```bash
-username: PatriciaPoulain
-password: 777
 ```
 
-```` bash
+### Cadastro de Tarefa
+
+**POST** `/tasks`  
+Autentique-se com Basic Auth usando o usuário criado.
+
+```json
 {
   "description": "Tarefa para gravar aula de tasks do curso de spring boot",
   "title": "Gravação de aula",
   "priority": "Alta",
   "startAt": "2025-05-21T17:00:00",
-  "endAt": "2025-05-22T17:00:00",
-  "idUser":"2d3a18f4-45ba-4928-9d9b-840710d23315"	
+  "endAt": "2025-05-22T17:00:00"
 }
-````
-
-
+```
 
 ## Configurações
 
@@ -77,3 +109,5 @@ password: 777
 - Os testes automatizados estão localizados em [`src/test/java/io/github/englishwithpatricia007/todolist/TodolistApplicationTests.java`](src/test/java/io/github/englishwithpatricia007/todolist/TodolistApplicationTests.java).
 
 ---
+
+> Projeto desenvolvido para fins de estudo com Java e Spring Boot.

@@ -63,7 +63,6 @@ public class TaskController {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    System.out.println(request.getAttribute("userId"));
     if (!task.getIdUser().equals(request.getAttribute("idUser"))) {
       return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
