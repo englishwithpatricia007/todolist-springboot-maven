@@ -17,12 +17,17 @@ public class UserController {
   @Autowired
   private IUserRepository userRepository;
 
-  @PostMapping("/")
-  public ResponseEntity create(@RequestBody UserModel userModel) {
+  @PostMapping
+  public ResponseEntity<?> create(@RequestBody UserModel userModel) {
+    if (userModel.getUsername() == null || userModel.getUsername().isBlank() ||
+        userModel.getPassword() == null || userModel.getPassword().isBlank()) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário e senha são obrigatórios.");
+    }
+
     var user = this.userRepository.findByUsername(userModel.getUsername());
 
     if (user != null) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário já existe");
+      return ResponseEntity.status(HttpStatus.CONFLICT).body("Usuário já existe");
     }
 
     var passwordHashed = BCrypt.withDefaults().hashToString(12, userModel.getPassword().toCharArray());

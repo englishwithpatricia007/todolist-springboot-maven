@@ -25,7 +25,7 @@ public class TaskController {
   @Autowired
   private ITaskRepository taskRepository;
 
-  @PostMapping("/")
+  @PostMapping
   public ResponseEntity create(@RequestBody TaskModel taskModel, HttpServletRequest request) {
     var idUser = request.getAttribute("idUser");
     taskModel.setIdUser((UUID) idUser);
@@ -46,7 +46,7 @@ public class TaskController {
     return ResponseEntity.status(HttpStatus.OK).body(task);
   }
 
-  @GetMapping("/")
+  @GetMapping
   public List<TaskModel> list(HttpServletRequest request) {
     var idUser = request.getAttribute("idUser");
     return this.taskRepository.findByIdUser((UUID) idUser);
@@ -63,6 +63,7 @@ public class TaskController {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    System.out.println(request.getAttribute("userId"));
     if (!task.getIdUser().equals(request.getAttribute("idUser"))) {
       return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
