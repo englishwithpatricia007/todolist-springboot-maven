@@ -99,6 +99,12 @@ Autentique-se com Basic Auth usando o usuário criado.
 }
 ```
 
+### Consulta de Tarefas
+
+**GET** `/tasks`  
+Autentique-se com Basic Auth usando o usuário criado.
+
+
 ## Configurações
 
 - As configurações do banco de dados e aplicação estão em [`src/main/resources/application.properties`](src/main/resources/application.properties).
@@ -111,3 +117,7 @@ Autentique-se com Basic Auth usando o usuário criado.
 ---
 
 > Projeto desenvolvido para fins de estudo com Java e Spring Boot.
+>
+POST: https://todolist-springboot-maven.onrender.com/users
+POST: https://todolist-springboot-maven.onrender.com/tasks
+GET: https://todolist-springboot-maven.onrender.com/tasks
