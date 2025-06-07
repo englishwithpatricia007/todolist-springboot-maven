@@ -99,11 +99,16 @@ Autentique-se com Basic Auth usando o usuário criado.
 }
 ```
 
-### Consulta de Tarefas
+### Consulta de Tarefas  
+  
+**GET** `/tasks`    
+Autentique-se com Basic Auth usando o usuário criado. 
 
-**GET** `/tasks`  
-Autentique-se com Basic Auth usando o usuário criado.
+### Em produção
 
+POST: https://todolist-springboot-maven.onrender.com/users  
+POST: https://todolist-springboot-maven.onrender.com/tasks  
+GET: https://todolist-springboot-maven.onrender.com/tasks  
 
 ## Configurações
 
@@ -114,10 +119,3 @@ Autentique-se com Basic Auth usando o usuário criado.
 
 - Os testes automatizados estão localizados em [`src/test/java/io/github/englishwithpatricia007/todolist/TodolistApplicationTests.java`](src/test/java/io/github/englishwithpatricia007/todolist/TodolistApplicationTests.java).
 
----
-
-> Projeto desenvolvido para fins de estudo com Java e Spring Boot.
->
-POST: https://todolist-springboot-maven.onrender.com/users
-POST: https://todolist-springboot-maven.onrender.com/tasks
-GET: https://todolist-springboot-maven.onrender.com/tasks
